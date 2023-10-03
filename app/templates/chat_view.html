@@ -1,0 +1,87 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--needed-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat_view_style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+
+    <!--box icon links -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- remix icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- google fonts -->
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">Welcome {{ username }}</a>
+        <ul class="navlist">
+            <a href="{{ url_for('chatHistory') }}">View History</a>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('home') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <div style="clear:both"></div>
+    <div class="container-fluid h-100">
+        <div class="row chat-div justify-content-center h-100">
+            <div class="col-md-8 col-xl-6 chat">
+                <div class="card">
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png"
+                                    class="rounded-circle user_img">
+                                <span class="online_icon"></span>
+                            </div>
+                            <div class="user_info">
+                                <span>Chatty</span>
+                                <p>Ask me anything!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="messageFormeight" class="chat-box card-body msg_card_body">
+
+
+                        <div class="chat-box-body">
+                            <div class="chat-box-overlay"></div>
+                            <div class="chat-logs"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="card-footer chat-input">
+                    <form id="messageArea" class="input-group">
+                        <label for="chat-input"></label><input type="text" id="chat-input" name="msg"
+                            placeholder="Type your message..." autocomplete="off" class="form-control type_msg"
+                            required />
+                        <div class="input-group-append">
+                            <button type="submit" id="chat-submit" class="input-group-text send_btn"><i
+                                    class="fas fa-location-arrow"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='custom.js') }}"></script>
+</body>
+
+</html>

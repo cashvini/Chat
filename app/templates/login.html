@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Registration page
+{%endblock%}
+
+{% block content%}
+<div id="signup-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal_title_Signup">Sign up to use Chatty</h2>
+            </div>
+
+            <form action="/login/" method="POST">
+                <div class="modal-input">
+                    <label for="name" class="modal-label">Name :</label>
+                    <input type="text" name="name"  required />
+                    <br>
+                    <br>
+                    <label for="email" class="modal-label">Email :</label>
+                    <input type="text" name="email" required />
+                    <br>
+                    <br>
+                    <label for="uname" class="modal-label">User Name :</label>
+                    <input type="text" name="uname" required />
+                    <br>
+                    <br>
+                    <label for="password" class="modal-label">Password : </label>
+                    <input type="text" name="password" />
+                </div>
+
+                <div class="modal-footer">
+                    <div class="button-container login-modal-footer">
+                        <button type="submit" class="button" required>Sign up</button>
+                        <button type="button" class="button" style="background-color:rgb(40, 40, 143)" onclick="closeSignupModal()">Log in?</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="login-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal_title_Login">Login & Start using Chatty</h2>
+                
+            </div>
+            <div clear:both></div>
+            <div style="margin-bottom:10px">
+                <p style="font-size:17px;color:white">{{ message }}</p>
+            </div>
+            <div clear:both></div>
+            <form action="/chat_view/" method="POST">
+                <div class="modal-input">
+                    <label for="uname" class="modal-label">User Name :</label>
+                    <input type="text" name="uname" required />
+                    <br>
+                    <br>
+                    <label for="password" class="modal-label">Password : </label>
+                    <input type="password" name="password" />
+                    <br>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="button-container login-modal-footer">
+                        <button type="submit" class="button" required>Login</button>
+                        <button type="button" class="button" style="background-color:rgb(40, 40, 143)" onclick="closeLoginModal()">Sign up?</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

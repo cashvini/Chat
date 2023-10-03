@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<div class="ui_class-text">
+    <h5>#1 Trending</h5>
+    <h1>Chatty</h1>
+    <p> Your assistant, Staying side by side whenever you need it </p>
+    <a href="{{ url_for('login_page') }}">Login</a>
+    <a href="{{ url_for('register_page') }}" class="ctta"><i class="ri-play-fill">Register</i></a>
+</div>
+<div class="ui_class-img">
+    <img src="{{ url_for('static', filename='dessert.png') }}" height="300px"  alt="My Image">
+</div>
+{% endblock %}
+
+
+

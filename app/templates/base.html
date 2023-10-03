@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <!--box icon links -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- remix icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- google fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Chatty</a>
+        <ul class="navlist">            
+            <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('home') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}          
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header> 
+    <section class="ui_class">        
+         {%block content %}
+         {% endblock %}
+    </section>
+    <!-- scrollreveal effect-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- custom js link-->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
